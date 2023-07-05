@@ -1,4 +1,4 @@
-# gardy11.github.io
+# Wordle
 * 功能介紹：
 
   * 用前端 HTML、CSS、JavaScript建置Wordle遊戲  
