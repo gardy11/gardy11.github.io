@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">     -->
+    <link rel="stylesheet" href="wordle.css">
+</head>
+
+<body>
+    <div id="header">
+        <svg data-toggle="modal" data-target="#gameInfo"  id="info" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12.4545 7.5C12.4545 8.1778 11.905 8.72727 11.2272 8.72727C10.5494 8.72727 9.99996 8.1778 9.99996 7.5C9.99996 6.82219 10.5494 6.27273 11.2272 6.27273C11.905 6.27273 12.4545 6.82219 12.4545 7.5Z" fill="#000000"></path> <path d="M10 11L12 11L12 16L14 16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="#000000" stroke-width="2"></path> </g></svg>
+        <h1 id="title">Wordle</h1>
+        <svg data-toggle="modal" data-target="#record" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="h-6 w-6 mr-3 cursor-pointer dark:stroke-white"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+
+    </div>
+    
+    <hr>
+
+    <!-- ----------------------- -->
+    <div class="modal fade" id="gameInfo" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header ">
+                <h4 class="modal-title w-100">
+                  遊戲說明
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                </h4>
+            </div>
+            <div class="modal-body">
+              <div>
+                <p class="game-info">Wordle 是一個需猜出正確英文單字的遊戲，答案皆為五個字母，你必須依序輸入五個英文字母組成的單字，按「ENTER」鍵提交。提交答案後，方格會變成不同的顏色，作為你下一輪的提示。範例如下：</p>
+                <div class="infotile"><span class="tile absent">J</span><span class="tile correct">U</span><span class="tile absent">D</span><span class="tile absent">G</span><span class="tile absent">E</span></div>
+                <p>答案有U這個字母，且位置正確</p>
+                <div class="infotile"><span class="tile absent">P</span><span class="tile absent">A</span><span class="tile absent">N</span><span class="tile present">D</span><span class="tile absent">A</span></div>
+                <p>答案有D這個字母，但位置不正確</p>             
+                <div class="infotile"><span class="tile absent">B</span><span class="tile absent">L</span><span class="tile absent">A</span><span class="tile absent">D</span><span class="tile absent">E</span></div>
+                <p>5個字母皆未出現在答案中</p>
+              </div>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div> -->
+          </div>
+          
+        </div>
+      </div>
+      <!-- ----------------------------- -->
+
+     
+
+
+      <!-- --------------------- -->
+      <!-- Modal -->
+<div class="modal fade fade-scale" id="noThisWord" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+        <h4 class="not-word">找不到這個單字</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- --------- -->
+<div class="modal fade fade-scale" id="needFiveLetter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+        <h4 class="not-word">需輸入5個英文字母</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ----------------------------- -->
+
+<!-- --------- -->
+<div class="modal fade fade-scale" id="answerInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+        <h4 id="answer"></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ----------------------------- -->
+
+
+
+    <div id="board"></div>
+
+     <!-- ----------------------- -->
+     <div class="modal fade" id="record" role="dialog">
+      <div class="modal-dialog ">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header text-center">
+              <h4 class="modal-title w-100 text-center">
+                遊戲紀錄
+                <button type="button" class="close" data-dismiss="modal">&times;</button>  
+              </h4>
+          </div>
+          <div class="modal-body">
+            <div class="record">
+              <h1 id="a">0</h1> <h1 id="e">0</h1> <h1 id="b">0%</h1> <h1 id="c">0</h1> <h1 id="d">0</h1> 
+              <div>遊戲次數</div> <div>勝場數</div> <div>勝率</div> <div>目前連勝次數</div> <div>最長連勝次數</div>
+            </div>
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div> -->
+        </div>
+        
+      </div>
+    </div>
+    <!-- ----------------------------- -->
+
+    
+    
+
+    <script src="wordle.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+
+</body>
+</html>
