@@ -4,7 +4,7 @@
   * 用HTML、CSS、JavaScript建置Wordle遊戲  
 
   * 搭配Bootstrap實現dialog效果  
-  * 右上角紀錄按鈕 紀錄遊玩成績 
+  * 使用Local Storage 紀錄遊玩成績 
 
   * 主要使用Tailwind CSS呈現畫面另外也實作RWD響應式設計
 
