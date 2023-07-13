@@ -103,6 +103,24 @@ hr {
     align-items: center;
 }
 
+/*.backspace-tile {
+  width: 36px;
+  height: 80px;
+  margin: 1px;
+  border: 1px solid lightgray;
+  cursor: pointer;
+  display: flex;
+   background-color: rgb(226 232 240); 
+
+   Text 
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}*/
+
 .enter-key-tile {
     width: 76px;
     height: 40px;
@@ -120,10 +138,6 @@ hr {
     align-items: center;
 }
 
-/* .key-tile:hover, .enter-key-tile:hover {
-    background-color:rgb(203 213 225);
-} */
-
 .original:hover {
     background-color:rgb(203 213 225);
 }
@@ -134,17 +148,6 @@ hr {
 
 .keyboard-row .present:hover {
     background-color:#b4a24f
-}
-
-
-#infoModal {
-        border: none;
-        box-shadow: 0 2px 6px #ccc;
-        border-radius: 10px;
-        
-        #infoModal::backdrop {
-        background-color: rgba(0, 0, 0, 0.1);
-      }
 }
 
 .infotile {
@@ -158,40 +161,27 @@ hr {
     justify-content: flex-start;
 } */
 
-.modal-title {
-    /* padding-left: 50px; */
-    text-align: center;
-    z-index: 50;
-}
 
-#needFiveLetter .modal-content {
+
+#dialog .modal-content {
     background-color: #F44336;
     color:white;
-    /* animation: fadeOut 12s linear 0s;
-    @keyframes fadeOut {
-        from {
-            opacity: 1;
-        }
-        to {
-            opacity: 0;
-        }
-    } */
 }
 
-/* @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"); */
-/* .fade-scale {
-    transform: scale(1);
-    opacity: 0;
-    -webkit-transition: all .25s linear;
-    -o-transition: all .25s linear;
-    transition: all .25s linear;
-  } */
+#dialog .modal-body {
+    padding-top: 9%;
+}
+
+.modal-title {
+  padding-left: 4%;
+}
 
   .record {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
   }
 
+ 
   .flip-in-diag-1-tr {
 	-webkit-animation: flip-in-diag-1-tr 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: flip-in-diag-1-tr 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

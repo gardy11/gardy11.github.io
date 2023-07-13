@@ -20,8 +20,8 @@ console.log(word);
 
 window.onload = function () {
     intialize();
+    getLocalStorage()
     // updateTimer();
-    getLocalStorage();
 }
 
 
@@ -118,17 +118,21 @@ function processInput(e) {
     }
 
     else if (e.code == "Enter" && col !== 5) {
-        $('#needFiveLetter').modal('show');
+        document.getElementById('dialogText').textContent = "需輸入5個英文字母";
+        $('#dialog').modal('show');
         setTimeout(function () {
-            $('#needFiveLetter').modal("hide");
+            $('#dialog').modal("hide");
         }, 1000);
     }
 
     if (!gameOver && row == height) {
-        gameOver = true;
-        document.getElementById("answer").innerText = word;
-        $('#answerInfo').modal('show');
+        // document.getElementById("answer").innerText = word;
+        document.getElementById('dialogText').textContent = "正確答案是 " + word;
+        $('#dialog').modal('show');
+        $('#record').modal('show');
+        // $('#answerInfo').modal('show');
         // clearInterval(timerInterval);
+        gameOver = true;
         win = false;
         updateStorage(win);
     }
@@ -155,10 +159,12 @@ function update() {
         // let currTile1 = document.querySelector([id^="row.toString()"]);
         // currTile1.classList.add("shake-bottom");
 
-        $('#noThisWord').modal('show');
+        document.getElementById('dialogText').textContent = "找不到這個單字";
+        $('#dialog').modal('show');
         setTimeout(function () {
-            $('#noThisWord').modal("hide");
+            $('#dialog').modal("hide");
         }, 1000);
+
         return;
     }
 
@@ -201,6 +207,10 @@ function update() {
         }
 
         if (correct == width) {
+            document.getElementById('dialogText').textContent = "答對!";
+            $('#dialog').modal('show');
+            $('#record').modal('show');
+
             gameOver = true;
             win = true;
             updateStorage(win);
@@ -304,20 +314,19 @@ function update() {
 
 
 function updateStorage(win) {
-    var a, b, c, d, e;
-    localStorage.getItem("遊戲次數") ? a = localStorage.getItem("遊戲次數") : a = 0;
-    localStorage.getItem("勝率") ? b = localStorage.getItem("勝率") : b = 0;
-    localStorage.getItem("目前連勝次數") ? c = localStorage.getItem("目前連勝次數") : c = 0;
-    localStorage.getItem("最長連勝次數") ? d = localStorage.getItem("最長連勝次數") : d = 0;
-    localStorage.getItem("勝場數") ? e = localStorage.getItem("勝場數") : e = 0;
+    let a, b, c, d, e;
+
+    a = localStorage.getItem("遊戲次數") ? localStorage.getItem("遊戲次數") : 0;
+    b = localStorage.getItem("勝率") ? localStorage.getItem("勝率") : 0;
+    c = localStorage.getItem("目前連勝次數") ? localStorage.getItem("目前連勝次數") : 0;
+    d = localStorage.getItem("最長連勝次數") ? localStorage.getItem("最長連勝次數") : 0;
+    e = localStorage.getItem("勝場數") ? localStorage.getItem("勝場數") : 0;
 
     if (win) {
         a++;
         c++;
         e++;
-        // b = parseInt(e / a * 100);
         b = Math.round(e / a * 100);
-
 
         c >= d ? d = c : d = d;
 
@@ -326,21 +335,21 @@ function updateStorage(win) {
         localStorage.setItem("目前連勝次數", c);
         localStorage.setItem("最長連勝次數", d);
         localStorage.setItem("勝場數", e);
-        getLocalStorage();
+        getLocalStorage()
     }
     else {
         a++;
         b = Math.round(e / a * 100);
-        // b = parseInt(e / a * 100);
         c = 0;
         d = d;
         e = e;
+
         localStorage.setItem("遊戲次數", a);
         localStorage.setItem("勝率", b);
         localStorage.setItem("目前連勝次數", c);
         localStorage.setItem("最長連勝次數", d);
         localStorage.setItem("勝場數", e);
-        getLocalStorage();
+        getLocalStorage()
     }
 }
 
@@ -354,3 +363,13 @@ function getLocalStorage() {
     }
 }
 
+// var recordButton = document.getElementById('recordButton');
+// recordButton.addEventListener('click', function () {
+//     if (localStorage.getItem("遊戲次數")) {
+//         document.getElementById('a').textContent = localStorage.getItem("遊戲次數");
+//         document.getElementById('b').textContent = localStorage.getItem("勝率") + "%";
+//         document.getElementById('c').textContent = localStorage.getItem("目前連勝次數");
+//         document.getElementById('d').textContent = localStorage.getItem("最長連勝次數");
+//         document.getElementById('e').textContent = localStorage.getItem("勝場數");
+//     }
+// })
