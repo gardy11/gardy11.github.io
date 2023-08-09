@@ -12,7 +12,7 @@
 # ScreenShots
 
 * home-page
-![image](https://raw.githubusercontent.com/gardy11/movie-project/main/home-page.PNG)
+![image](遊戲畫面.PNG)
 * movie-detail
 ![image](https://raw.githubusercontent.com/gardy11/movie-project/main/movie-detail.PNG)
 * collection
