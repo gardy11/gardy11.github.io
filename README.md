@@ -14,4 +14,4 @@
 * game-info
 ![image](遊戲說明.PNG)
 * game-page
-![image](遊戲畫面2.PNG)
+![image](遊戲畫面.PNG)
