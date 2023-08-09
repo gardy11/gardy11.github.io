@@ -13,7 +13,7 @@
 
 * home-page
 ![image](遊戲畫面.PNG)
-* movie-detail
-![image](https://raw.githubusercontent.com/gardy11/movie-project/main/movie-detail.PNG)
-* collection
-![image](https://raw.githubusercontent.com/gardy11/movie-project/main/collection.PNG)
+* game-info
+![image](遊戲說明.PNG)
+* game-page
+![image](遊戲畫面2.PNG)
