@@ -11,8 +11,6 @@
 
 # ScreenShots
 
-* home-page
-![image](遊戲畫面.PNG)
 * game-info
 ![image](遊戲說明.PNG)
 * game-page
