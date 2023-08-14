@@ -7,7 +7,7 @@
   * 使用Local Storage 紀錄遊玩成績   
 
 
-* GitHub Page : https://gardy11.github.io/
+* GitHub Page : [https://gardy11.github.io/](https://gardy11.github.io/wordle/)
 
 # ScreenShots
 
